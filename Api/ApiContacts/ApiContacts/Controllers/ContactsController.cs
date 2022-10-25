@@ -9,9 +9,9 @@ namespace ApiContacts.Controllers
     [ApiController]
     public class ContactsController : ControllerBase
     {
-        private readonly ContactsService service;
+        private readonly IContactsService service;
 
-        public ContactsController(ContactsService _service)
+        public ContactsController(IContactsService _service)
         {
             service = _service;
         }
