@@ -17,9 +17,9 @@ namespace ApiContacts.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Contact>>> GetContacts()
+        public ActionResult<List<Contact>> GetContacts()
         {
-            return Ok(await service.GetContacts());
+            return Ok( service.GetContacts());
         }
 
         [HttpPost]

@@ -15,6 +15,13 @@ builder.Services.AddDbContext<ContactsDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddCors(options => options.AddPolicy(name: "ContactOrigins",
+    policy =>
+    {
+        policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+    }));
+
+
 
 var app = builder.Build();
 
@@ -24,7 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("ContactOrigins");
 app.UseAuthorization();
 
 app.MapControllers();

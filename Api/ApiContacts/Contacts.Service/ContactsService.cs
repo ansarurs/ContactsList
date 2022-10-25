@@ -10,7 +10,7 @@ namespace Contacts.Service
 {
     public interface IContactsService
     {
-        Task<List<Contact>>  GetContacts();
+        List<Contact>  GetContacts();
         Task<List<Contact>> DeleteContact(int id);
 
         Task<List<Contact>> UpdateContact(Contact cntct);
@@ -79,9 +79,9 @@ namespace Contacts.Service
             return ConvertdbContactToContact(_context.contacts.ToList()).ToList();
         }
 
-        public async Task<List<Contact>> GetContacts()
+        public List<Contact> GetContacts()
         {
-            throw new NotImplementedException();
+            return ConvertdbContactToContact(_context.contacts.ToList()).ToList();
         }
 
         public async Task<List<Contact>> UpdateContact(Contact cntct)
@@ -102,6 +102,10 @@ namespace Contacts.Service
         public async Task<Contact> FindContact(int id)
         {
             var res = await _context.contacts.FindAsync(id);
+            if (res == null)
+            {
+                return null;
+            }
             return  ConvertdbContactToContact(res);
         }
 

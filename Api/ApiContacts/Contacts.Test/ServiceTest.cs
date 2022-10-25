@@ -34,13 +34,13 @@ namespace Contacts.Test
         }
 
         [Fact]
-        public async void Task_GetContacts_Return_OkResult()
+        public  void Task_GetContacts_Return_OkResult()
         {
             //Arrange
             var service = new ContactsService(context);
            
             //Act
-            var data = await service.GetContacts();
+            var data =  service.GetContacts();
 
             //Assert
             Assert.NotNull(data);
