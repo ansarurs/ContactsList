@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Contacts.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,24 +13,21 @@ namespace Contacts.Test
         {
         }
 
-        //public void Seed(BlogDBContext context)
-        //{
-        //    context.Database.EnsureDeleted();
-        //    context.Database.EnsureCreated();
+        public void Seed(ContactsDbContext context)
+        {
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
-        //    context.Category.AddRange(
-        //        new Category() { Name = "CSHARP", Slug = "csharp" },
-        //        new Category() { Name = "VISUAL STUDIO", Slug = "visualstudio" },
-        //        new Category() { Name = "ASP.NET CORE", Slug = "aspnetcore" },
-        //        new Category() { Name = "SQL SERVER", Slug = "sqlserver" }
-        //    );
+            context.contacts.AddRange(
+                new dbContact() { Name = "CSHARP", FirstName = "csharp" },
+                new dbContact() { Name = "VISUAL STUDIO", FirstName = "visualstudio" },
+                new dbContact() { Name = "ASP.NET CORE", FirstName = "aspnetcore" },
+                new dbContact() { Name = "SQL SERVER", FirstName = "sqlserver" }
+            );
 
-        //    context.Post.AddRange(
-        //        new Post() { Title = "Test Title 1", Description = "Test Description 1", CategoryId = 2, CreatedDate = DateTime.Now },
-        //        new Post() { Title = "Test Title 2", Description = "Test Description 2", CategoryId = 3, CreatedDate = DateTime.Now }
-        //    );
-        //    context.SaveChanges();
-        //}
+        
+            context.SaveChanges();
+        }
 
     }   
 }

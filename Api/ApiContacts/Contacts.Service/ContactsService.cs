@@ -15,7 +15,7 @@ namespace Contacts.Service
 
         Task<List<Contact>> UpdateContact(Contact cntct);
         Task<List<Contact>> CreateContacts(Contact contact);
-        Task<List<Contact>> FindContact(int id);
+        Task<Contact> FindContact(int id);
 
     }
     public class ContactsService : IContactsService
@@ -105,9 +105,6 @@ namespace Contacts.Service
             return  ConvertdbContactToContact(res);
         }
 
-        Task<List<Contact>> IContactsService.FindContact(int id)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }
